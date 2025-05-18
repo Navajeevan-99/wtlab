@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <style>
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: lightblue;
+                margin-top:25%;
+            }
+            #form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0,0,0,0.3);
+                width: 300px;
+                height: 150px;
+                border: 5px solid rgba(0,0,0,0.5);
+                border-radius: 10%;
+            
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form" action="/logined" method="post">
+            <table>
+                <th></th><th></th>
+                <tr>
+                <td>
+            <label for="name">
+                Username  
+            </label></td>
+            <td>:</td>
+            <td>
+            <input type="text" name="name" id="uname"></td></tr>
+            <tr>
+            <td>
+            <label for="dob">DOB </label></td>
+            <td>:</td>
+            <td>
+            <input type="date" id="udob" name="udate"></td></tr>
+            <submit></submit>
+            </table>
+            <button style="margin-top: 100px; position: relative; right: 100px;">Login</button>
+        </form>
+    </body>
+</html>
