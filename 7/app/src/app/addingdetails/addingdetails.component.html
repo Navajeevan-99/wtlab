@@ -1,0 +1,22 @@
+<form>
+    <table id="adding">
+        <tr>
+            <td>Name</td><td>:</td><td><input type="text" id="name" [(ngModel)]="name" name="name"></td>
+        </tr>
+        <tr>
+            <td>age</td><td>:</td><td><input type="text" id="age" [(ngModel)]="age" name="age"></td>
+        </tr>
+        <tr>
+            <td><button (click)="addstudents()">ADD</button> </td>
+        </tr>
+    </table>
+    <table id="show">
+        <thead>
+        <th style="border: 2px solid black;">Name</th><th style="border: 2px solid black;">age</th></thead>
+        <tbody>
+        <tr *ngFor="let student of students" style="border: 2px solid black;">
+            <td style="border: 2px solid black;">{{student.name}}</td><td style="border: 2px solid black;">{{student.age}}</td>
+        </tr>
+    </tbody>
+    </table>
+</form>
