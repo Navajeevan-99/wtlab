@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <style>
+            body{
+                background-color: lightblue;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+            h1{
+                background-color: lightcoral;
+                width: 100%;
+                margin-top: -10px;
+                margin-left: -15px;
+                margin-right: -15px;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+            div{
+                position:absolute;
+                top: 100px;
+                background-color: rgba(255,255,255,0.2);
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10%;
+                border: 3px solid rgba(255,255,255,0.4);
+                font-size: 120%;
+                line-height: 0.2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>|Welcome {{hostelname}} Hostel|</h1>
+        
+        <div>
+            <pre>
+            <p>Name      : {{username}}</p>
+            <p>Roll No   : {{rollno}}</p>
+            <p>Age       : {{age}}</p>
+            <p>Gender    : {{gender}}</p>
+            <p>DOB       : {{dob}}</p>
+            <p>P.NO      : {{pno}}</p>
+            <p>Address   : {{address}}</p>
+            <p>Email     : {{email}}</p>
+            <p>Pincode   : {{pincode}}</p>
+            <p>Country   : {{country}}</p>
+        </pre>
+        </div>
+
+    </body>
+</html>

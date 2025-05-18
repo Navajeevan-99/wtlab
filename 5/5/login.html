@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body
+            {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                background-color: lightblue;
+            }
+            /* body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('./image/ba2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(10px);  Apply blur effect 
+        z-index: -1;  Ensure it stays behind content 
+    }
+     */
+            td
+            {
+                color:black;
+                font-size: 30px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            #fid
+            {
+                background-color: rgba(255,255,255,0.3);
+                border: 3px solid lightgrey;
+                border-radius: 10%;
+                margin-top: 60px;
+                width: 550px;
+                height: 750px;
+                
+            }
+            input[type="text"],input[type="number"],input[type="email"],textarea,input[type="date"]
+            {
+                font-size: 20px;
+                background-color: rgba(255,255,255,0.3);
+            }
+            tr
+            {
+                top: 30px;
+            }
+            button
+            {
+                background-color: rgba(255,255,255,0.4);
+                font-size: 20px;
+                margin-right: 70px;
+                margin-top: 10px;
+                border: 3px solid white;
+                border-radius: 30%;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="fid" action="/logged" method="post">
+            <table style="margin-left: 20px;">
+                <tr>
+                    <td>Name</td><td><input id="uname" name="uname" type="text" placeholder="Enter your name"></td>
+                </tr>
+                <tr>
+                    <td>Roll Number</td><td><input type="text" name="urollno" id="rollno" placeholder="Enter your rollno"></td>
+                </tr>
+                <tr>
+                    <td>Age</td><td><input type="number" name="uage" placeholder="Enter Your age" id="age"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" id="gender" name="Gender" value="Male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="gender" name="Gender" value="Female">
+                        <label for="female">Female</label>
+                        <br>
+                        <input type="radio" id="gender" name="Gender" value="Others">
+                        <label for="others">Others</label>
+                    </td>
+                </tr>
+                <tr><td>Date Of Birth</td><td><input name="udate" type="date" placeholder="yyyy-mm-dd" id="date"></td></tr>
+                <tr><td>Phone Number</td><td><input type="number" name="pno" placeholder="Enter Your Number" id="phone"></td></tr>
+                <tr><td>E-Mail</td><td><input type="email" name="uemail" placeholder="Enter your email" id="email"></td>></tr>
+                <tr>
+                    <td>Address</td><td><textarea name="utext" rows="4" cols="21" placeholder="Enter your address" id="address"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Pincode</td><td><input type="number" name="pincode" placeholder="Enter Your Pincode"></td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td><input id="country" type="text" name="country" placeholder="Enter Your country name"></td>
+                </tr>
+                <tr>
+                    <td>Hostel Name</td><td><input type="text" name="hname" placeholder="Enter your hostel name"></td>
+                </tr>
+                <!-- <tr><td>Nationality</td><td><input type="text" placeholder="Enter your nationality" id="nation"></td></tr> -->
+            </table>
+            <button type="submit" onclick="validate(event)" id="but">submit</button>
+        </form>
+        <script>
+            function validate(event)
+            {
+            event.preventDefault();
+            name1();
+            country1();
+            date1();
+            rollno1();
+            // var nation=document.getElementById("nation").value;
+            //     if (nation=="")
+            // {
+            //     alert("nationality is empty")
+            // }
+            // for (i=0;i<nation.length;i++)
+            // {
+            //     if (!isNaN(nation[i]))
+            // {
+            //     alert("Please Enter alphabets");
+            //     break;
+            // }}
+            email1();
+            phone1();
+            address1();
+            gender1();
+            }
+            function name1()
+            {
+                var i;
+                var name=document.getElementById("uname").value;
+                if (name=="")
+            {
+                alert("Name is required");
+            }
+            for (i=0;i<name.length;i++)
+            {
+                if (!isNaN(name[i]))
+            {
+                alert("Please Enter alphabets");
+                break;
+            }
+            }
+            }
+            function country1()
+            {
+                var country=document.getElementById("country").value;
+                if (country=="")
+            {
+                alert("Country is empty")
+            }
+            for (i=0;i<country.length;i++)
+            {
+                if (!isNaN(country[i]))
+            {
+                alert("Please Enter alphabets in country");
+                break;
+            }
+            }
+            }
+            function date1()
+            {
+                var i;
+                var date=document.getElementById("date").value;
+            if (date==="")
+            {
+                alert("Date is empty");
+                return;
+            }
+            var dy=parseInt(date.substring(0,4));
+            var dm=parseInt(date.substring(5,7));
+            if (dy<2000 || dy>=2006)
+            {
+                alert("You are not eligible . PLease enter range between 2000 and 2009");
+            }
+            var age=parseInt(document.getElementById("age").value);
+            var cdate=new Date();
+            cdate=cdate.toISOString().split('T')[0];
+            var cy=parseInt(cdate.substring(0,4));
+            var cm=parseInt(cdate.substring(5,7));
+            if ((age!=(cy-dy-1) && dm>cm ) || (age!=(cy-dy) && dm<cm) || (age!=(cy-dy) && dm==cm))
+            {
+                alert("your age and date of birth is not matching");
+            }
+            }
+            function email1()
+            {
+                var email=document.getElementById("email").value;
+                if (email=="")
+            {
+                alert("Email is required");
+            }
+            }
+            function phone1()
+            {
+                var phone=document.getElementById("phone").value;
+                if (phone=="")
+            {
+                alert("Phone is required");
+            }
+            }
+            function address1()
+            {
+                var address=document.getElementById("address").value;
+                if (address=="")
+            {
+                alert("Address is empty");
+            }
+            }
+            function gender1()
+            {
+                console.log("Successfully submitted the form");
+            var gen=document.getElementById("gender").value;
+            if (gen=="")
+            {
+                alert("Please select your gender");
+            }
+            }
+            function rollno1()
+            {
+                var rollno=document.getElementById("rollno").value;
+                alert(rollno);
+                if (rollno.length>8)
+            {
+                alert("Your rollno exceeds . Please Enter 8 characters");
+            }
+                if (isNaN(rollno[0]) && isNaN(rollno[1]) && !isNaN(rollno[2]) && !isNaN(rollno[3]) && !isNaN(rollno[4]) && !isNaN(rollno[5]) && isNaN(rollno[6]) && isNaN(rollno[6]))
+            {
+                alert("Please enter your rollno correct format line 23ITR109"); 
+            }
+            document.getElementById("fid").submit();
+            }
+            
+        </script>
+    </body>
+</html>
